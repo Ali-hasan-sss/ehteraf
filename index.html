@@ -1,373 +1,576 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مطبعة بصمة احتراف</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مطبعة بصمة احتراف</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-<style>
-:root {
-  --charcoal: #1c1c1c;
-  --gold: #d4af37;
-  --white: #ffffff;
-  --teal: #00b6b4;
-  --gray-dark: #2c2c2c;
-  --gray-light: #555555;
-}
+    <style>
+      :root {
+        --charcoal: #1c1c1c;
+        --gold: #d4af37;
+        --white: #ffffff;
+        --teal: #00b6b4;
+        --gray-dark: #2c2c2c;
+        --gray-light: #555555;
+      }
 
-/* عام */
-body {
-  margin: 0;
-  font-family: 'Tajawal', sans-serif;
-  background-color: var(--white);
-  color: var(--charcoal);
-  line-height: 1.7;
-  scroll-behavior: smooth;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: pageFadeIn 1s ease forwards;
-}
-@keyframes pageFadeIn {
-  to {opacity:1; transform: translateY(0);}
-}
+      /* عام */
+      body {
+        margin: 0;
+        font-family: "Tajawal", sans-serif;
+        background-color: var(--white);
+        color: var(--charcoal);
+        line-height: 1.7;
+        scroll-behavior: smooth;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: pageFadeIn 1s ease forwards;
+      }
+      @keyframes pageFadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-/* Header */
-header {
-  background: linear-gradient(90deg, var(--charcoal), #000000);
-  color: var(--gold);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  animation: headerSlide 1s ease forwards;
-}
-@keyframes headerSlide {
-  0% {transform: translateY(-100px); opacity:0;}
-  100% {transform: translateY(0); opacity:1;}
-}
+      /* Header */
+      header {
+        background: linear-gradient(90deg, var(--charcoal), #000000);
+        color: var(--gold);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        animation: headerSlide 1s ease forwards;
+      }
+      @keyframes headerSlide {
+        0% {
+          transform: translateY(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
 
-header img.logo {
-  height: 90px; 
-  width: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--gold);
-  box-shadow: 0 0 20px rgba(212,175,55,0.4);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-header img.logo:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 30px rgba(212,175,55,0.7);
-}
+      header img.logo {
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--gold);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+      header img.logo:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+      }
 
-header .title {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--gold);
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-}
-nav a {
-  color: var(--white);
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: color 0.3s, transform 0.3s;
-}
-nav a:hover { color: var(--gold); transform: scale(1.1); }
+      header .title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--gold);
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+      }
+      nav a {
+        color: var(--white);
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: color 0.3s, transform 0.3s;
+      }
+      nav a:hover {
+        color: var(--gold);
+        transform: scale(1.1);
+      }
 
-/* Slider */
-.slider {
-  position: relative;
-  height: 85vh;
-  overflow: hidden;
-}
-.slide {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(70%);
-  opacity: 0;
-  transform: scale(1.1);
-  transition: opacity 1s ease, transform 1s ease;
-}
-.slide.active {
-  opacity: 1;
-  transform: scale(1);
-}
+      /* قائمة الهمبرجر */
+      .menu-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        color: var(--gold);
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: transform 0.3s;
+      }
+      .menu-toggle:hover {
+        transform: scale(1.1);
+      }
 
-.slider-text {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: var(--white);
-  animation: sliderTextFade 1s ease forwards;
-}
-@keyframes sliderTextFade {
-  0% {opacity:0; transform:translate(-50%, -55%);}
-  100% {opacity:1; transform:translate(-50%, -50%);}
-}
-.slider-text h2 {
-  font-size: 3rem; font-weight: 800; margin-bottom: 1rem;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-  animation: textBounce 2s infinite;
-}
-.slider-text p {
-  font-size: 1.2rem; margin-bottom: 1.5rem; text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-}
-.slider-text a {
-  padding: 0.8rem 1.5rem;
-  background: var(--gold);
-  color: var(--charcoal);
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 30px;
-  transition: background 0.3s, transform 0.3s;
-}
-.slider-text a:hover { background: var(--teal); color: var(--white); transform: scale(1.05); }
+      /* التجاوب مع الموبايل */
+      @media (max-width: 768px) {
+        body {
+          overflow-x: hidden;
+          max-width: 100%;
+        }
 
-@keyframes textBounce {
-  0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-5px);}
-}
+        html {
+          overflow-x: hidden;
+          max-width: 100%;
+        }
 
-/* Sections */
-section { padding: 5rem 2rem; text-align: center; position: relative; min-height: 300px; }
+        header {
+          padding: 0.8rem 1rem;
+          flex-wrap: wrap;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
 
-/* نبذة عنا */
-section#about {
-  background-image: 
-    linear-gradient(135deg, rgba(220,220,220,0.9), rgba(200,200,200,0.9)),
-    url('img/gold-lines.png');
-  background-size: cover, auto;
-  background-repeat: no-repeat, repeat;
-  background-position: center, center;
-  text-align: center;
-}
+        header img.logo {
+          height: 60px;
+          width: 60px;
+        }
 
-.intro {
-  background: transparent;
-  border-radius: 16px;
-  color: #070707;
-  padding: 3rem 2rem;
-  max-width: 900px;
-  margin: 2rem auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  opacity:0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-}
-.intro h2 { font-size: 2.5rem; }
-.intro p { font-size: 1.4rem; line-height: 1.8; }
-@keyframes fadeInUp { to {opacity:1; transform: translateY(0);} }
+        header .title {
+          font-size: 1.2rem;
+          margin: 0 0.5rem;
+        }
 
-/* الخدمات */
-section#services {
-  background: linear-gradient(135deg, rgba(220,220,220,0.9), rgba(200,200,200,0.9)), url('img/gold-lines.png');
-  background-size: cover, auto;
-  background-repeat: no-repeat, repeat;
-  background-position: center;
-}
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-.feature {
-  background: rgba(0,0,0,0.5);
-  color: white;
-  padding: 2rem;
-  border-radius: 16px;
-  opacity:0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-}
+        .menu-toggle {
+          display: block;
+          order: 3;
+        }
 
-/* Testimonials */
-.testimonials {
-  background: linear-gradient(120deg, var(--charcoal), #2a2a2a);
-  color: var(--white);
-}
-.testimonial-container {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-}
-.testimonial {
-  background: rgba(255,255,255,0.08);
-  padding: 2rem;
-  border-radius: 14px;
-  width: 300px;
-  text-align: center;
-  opacity:0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
-}
-.testimonial.visible { opacity:1; transform:translateY(0); }
+        nav {
+          display: none;
+          width: 100%;
+          max-width: 100%;
+          flex-direction: column;
+          background: var(--charcoal);
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          padding: 1rem 0;
+          box-sizing: border-box;
+        }
 
-/* Footer */
-footer {
-  background: var(--charcoal);
-  color: var(--white);
-  padding: 3rem 2rem;
-}
+        nav.active {
+          display: flex;
+        }
 
-/* ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ */
-.whatsapp-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #25d366;
-  color: white;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  text-decoration: none;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  z-index: 999999; /* أكبر رقم لضمان ظهوره */
-  animation: pulseWhatsapp 1.8s infinite;
-}
+        nav a {
+          margin: 0.5rem 0;
+          padding: 0.8rem 1rem;
+          width: 100%;
+          max-width: 100%;
+          text-align: center;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          box-sizing: border-box;
+        }
 
-@keyframes pulseWhatsapp {
-  0% {transform: scale(1);}
-  50% {transform: scale(1.08);}
-  100% {transform: scale(1);}
-}
-.whatsapp-btn:hover {
-  transform: scale(1.15);
-}
+        nav a:last-child {
+          border-bottom: none;
+        }
+      }
 
-</style>
-</head>
+      /* Slider */
+      .slider {
+        position: relative;
+        height: 85vh;
+        overflow: hidden;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(70%);
+        opacity: 0;
+        transform: scale(1.1);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+      .slide.active {
+        opacity: 1;
+        transform: scale(1);
+      }
 
-<body>
+      .slider-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: var(--white);
+        animation: sliderTextFade 1s ease forwards;
+      }
+      @keyframes sliderTextFade {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -55%);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .slider-text h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        animation: textBounce 2s infinite;
+      }
+      .slider-text p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+      }
+      .slider-text a {
+        padding: 0.8rem 1.5rem;
+        background: var(--gold);
+        color: var(--charcoal);
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 30px;
+        transition: background 0.3s, transform 0.3s;
+      }
+      .slider-text a:hover {
+        background: var(--teal);
+        color: var(--white);
+        transform: scale(1.05);
+      }
 
-<header>
-  <img src="img/logo.PNG" alt="شعار المطبعة" class="logo">
-  <div class="title">مطبعة بصمة احتراف</div>
-  <nav>
-    <a href="#home">الرئيسية</a>
-    <a href="#about">من نحن</a>
-    <a href="services.html">الخدمات</a>
-    <a href="#clients">عملاؤنا</a>
-    <a href="contact.html">اتصل بنا</a>
-    <a href="Catalog.html" >المعرض  </a>
-  </nav>
-  
-</header>
+      @keyframes textBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
 
-<div class="slider">
-  
-  <div class="slide active" style="background-image:url('img/serv1.png');"></div>
-  <div class="slide" style="background-image:url('img/serv2.png');"></div>
-  <div class="slide" style="background-image:url('img/serv3.png');"></div>
-  <div class="slide" style="background-image:url('img/serv4.jpg');"></div>
-  <div class="slide" style="background-image:url('img/serv5.jpg');"></div>
+      /* Sections */
+      section {
+        padding: 5rem 2rem;
+        text-align: center;
+        position: relative;
+        min-height: 300px;
+      }
 
-  <div class="slider-text">
-    <h2>حلول طباعية عصرية</h2>
-    <p>جودة عالية – سرعة في التنفيذ – ابتكار دائم</p>
-    <a href="#services">استكشف خدماتنا</a>
-    
-  </div>
-  
-</div>
-<!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-<a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
+      /* نبذة عنا */
+      section#about {
+        background-image: linear-gradient(
+            135deg,
+            rgba(220, 220, 220, 0.9),
+            rgba(200, 200, 200, 0.9)
+          ),
+          url("img/gold-lines.png");
+        background-size: cover, auto;
+        background-repeat: no-repeat, repeat;
+        background-position: center, center;
+        text-align: center;
+      }
 
-<section id="about" class="intro">
-  <h2>نبذة عنا</h2>
-  <p>في مطبعة بصمة احتراف، نقدم حلولاً طباعية وإعلانية عصرية، تجمع بين الحرفية العالية والابتكار المستمر لتترك بصمة مميزة لدى عملائنا.</p>
-<!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-<a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
+      .intro {
+        background: transparent;
+        border-radius: 16px;
+        color: #070707;
+        padding: 3rem 2rem;
+        max-width: 900px;
+        margin: 2rem auto;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease forwards;
+      }
+      .intro h2 {
+        font-size: 2.5rem;
+      }
+      .intro p {
+        font-size: 1.4rem;
+        line-height: 1.8;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-</section>
+      /* الخدمات */
+      section#services {
+        background: linear-gradient(
+            135deg,
+            rgba(220, 220, 220, 0.9),
+            rgba(200, 200, 200, 0.9)
+          ),
+          url("img/gold-lines.png");
+        background-size: cover, auto;
+        background-repeat: no-repeat, repeat;
+        background-position: center;
+      }
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .feature {
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 2rem;
+        border-radius: 16px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease forwards;
+      }
 
-<section id="services">
-  <h2>خدماتنا</h2>
-  <div class="features">
-    <div class="feature"><i class="fas fa-gift"></i><h3>الهدايا الدعائية</h3><p>اعلام، ميداليات، أقلام، فلاشات، نوت بوك والمزيد.</p></div>
-    <div class="feature"><i class="fas fa-file-invoice"></i><h3>المطبوعات التجارية</h3><p>فواتير، بروشورات، عقود، أظرف، كتيبات.</p></div>
-    <div class="feature"><i class="fas fa-award"></i><h3>الدروع التذكارية</h3><p>سيوف، دروع جلدية، مجسمات فاخرة.</p></div>
-  <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-<a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
-  </div>
-<!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-<a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
+      /* Testimonials */
+      .testimonials {
+        background: linear-gradient(120deg, var(--charcoal), #2a2a2a);
+        color: var(--white);
+      }
+      .testimonial-container {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+      }
+      .testimonial {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2rem;
+        border-radius: 14px;
+        width: 300px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+      }
+      .testimonial.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-</section>
+      /* Footer */
+      footer {
+        background: var(--charcoal);
+        color: var(--white);
+        padding: 3rem 2rem;
+      }
 
-<section id="clients" class="testimonials">
-  <h2>آراء العملاء</h2>
-  <div class="testimonial-container">
-    <div class="testimonial">
-      <div class="user-icon"><i class="fas fa-user-circle"></i></div>
-      <p>أفضل مطبعة تعاملت معها، دقة وجودة عالية.</p>
-      <span class="client-name">– عميل 1</span>
+      /* ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ */
+      .whatsapp-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: #25d366;
+        color: white;
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        text-decoration: none;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        z-index: 999999; /* أكبر رقم لضمان ظهوره */
+        animation: pulseWhatsapp 1.8s infinite;
+      }
+
+      @keyframes pulseWhatsapp {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .whatsapp-btn:hover {
+        transform: scale(1.15);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <img src="img/logo.PNG" alt="شعار المطبعة" class="logo" />
+      <div class="title">مطبعة بصمة احتراف</div>
+      <button class="menu-toggle" aria-label="قائمة التنقل">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#about">من نحن</a>
+        <a href="services.html">الخدمات</a>
+        <a href="#clients">عملاؤنا</a>
+        <a href="contact.html">اتصل بنا</a>
+        <a href="Catalog.html">المعرض </a>
+      </nav>
+    </header>
+
+    <div class="slider">
+      <div
+        class="slide active"
+        style="background-image: url('img/serv1.png')"
+      ></div>
+      <div class="slide" style="background-image: url('img/serv2.png')"></div>
+      <div class="slide" style="background-image: url('img/serv3.png')"></div>
+      <div class="slide" style="background-image: url('img/serv4.jpg')"></div>
+      <div class="slide" style="background-image: url('img/serv5.jpg')"></div>
+
+      <div class="slider-text">
+        <h2>حلول طباعية عصرية</h2>
+        <p>جودة عالية – سرعة في التنفيذ – ابتكار دائم</p>
+        <a href="#services">استكشف خدماتنا</a>
+      </div>
     </div>
+    <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
+    <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <div class="testimonial">
-      <div class="user-icon"><i class="fas fa-user-circle"></i></div>
-      <p>خدمة سريعة واحترافية، أنصح بهم بشدة.</p>
-      <span class="client-name">– عميل 2</span>
-    </div>
-  </div>
-<!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-<a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
+    <section id="about" class="intro">
+      <h2>نبذة عنا</h2>
+      <p>
+        في مطبعة بصمة احتراف، نقدم حلولاً طباعية وإعلانية عصرية، تجمع بين
+        الحرفية العالية والابتكار المستمر لتترك بصمة مميزة لدى عملائنا.
+      </p>
+      <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
+      <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </section>
 
-</section>
+    <section id="services">
+      <h2>خدماتنا</h2>
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-gift"></i>
+          <h3>الهدايا الدعائية</h3>
+          <p>اعلام، ميداليات، أقلام، فلاشات، نوت بوك والمزيد.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-file-invoice"></i>
+          <h3>المطبوعات التجارية</h3>
+          <p>فواتير، بروشورات، عقود، أظرف، كتيبات.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-award"></i>
+          <h3>الدروع التذكارية</h3>
+          <p>سيوف، دروع جلدية، مجسمات فاخرة.</p>
+        </div>
+        <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
+        <a
+          href="https://wa.me/966502323906"
+          class="whatsapp-btn"
+          target="_blank"
+        >
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+      <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
+      <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </section>
 
-<footer id="contact">
-  <p style="margin-top:1.5rem;">© 2025 جميع الحقوق محفوظة - مطبعة بصمة احتراف</p>
-</footer>
+    <section id="clients" class="testimonials">
+      <h2>آراء العملاء</h2>
+      <div class="testimonial-container">
+        <div class="testimonial">
+          <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+          <p>أفضل مطبعة تعاملت معها، دقة وجودة عالية.</p>
+          <span class="client-name">– عميل 1</span>
+        </div>
 
+        <div class="testimonial">
+          <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+          <p>خدمة سريعة واحترافية، أنصح بهم بشدة.</p>
+          <span class="client-name">– عميل 2</span>
+        </div>
+      </div>
+      <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
+      <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </section>
 
-<script>
-// Slider Auto
-let slides = document.querySelectorAll('.slide');
-let current = 0;
-setInterval(() => {
-  slides[current].classList.remove('active');
-  current = (current + 1) % slides.length;
-  slides[current].classList.add('active');
-}, 4000);
+    <footer id="contact">
+      <p style="margin-top: 1.5rem">
+        © 2025 جميع الحقوق محفوظة - مطبعة بصمة احتراف
+      </p>
+    </footer>
 
-// Testimonials Animation
-const testimonials = document.querySelectorAll('.testimonial');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
-  });
-},{threshold:0.2});
-testimonials.forEach(t => observer.observe(t));
-</script>
+    <script>
+      // قائمة الهمبرجر للموبايل
+      const menuToggle = document.querySelector(".menu-toggle");
+      const nav = document.querySelector("nav");
 
-</body>
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+        const icon = menuToggle.querySelector("i");
+        if (nav.classList.contains("active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        }
+      });
+
+      // إغلاق القائمة عند النقر على رابط
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("active");
+          const icon = menuToggle.querySelector("i");
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        });
+      });
+
+      // Slider Auto
+      let slides = document.querySelectorAll(".slide");
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      }, 4000);
+
+      // Testimonials Animation
+      const testimonials = document.querySelectorAll(".testimonial");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      testimonials.forEach((t) => observer.observe(t));
+    </script>
+  </body>
 </html>

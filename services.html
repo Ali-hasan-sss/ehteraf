@@ -55,6 +55,10 @@ header img.logo:hover {
 }
 
 header .title { font-size: 2rem; font-weight: 800; color: var(--gold); }
+nav {
+  display: flex;
+  align-items: center;
+}
 nav a {
   color: var(--white);
   margin: 0 10px;
@@ -63,6 +67,89 @@ nav a {
   transition: color 0.3s, transform 0.3s;
 }
 nav a:hover { color: var(--gold); transform: scale(1.1); }
+
+/* قائمة الهمبرجر */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--gold);
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s;
+}
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* التجاوب مع الموبايل */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  
+  html {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  
+  header {
+    padding: 0.8rem 1rem;
+    flex-wrap: wrap;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  header img.logo {
+    height: 60px;
+    width: 60px;
+  }
+  
+  header .title {
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
+  }
+  
+  .menu-toggle {
+    display: block;
+    order: 3;
+  }
+  
+  nav {
+    display: none;
+    width: 100%;
+    max-width: 100%;
+    flex-direction: column;
+    background: var(--charcoal);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    padding: 1rem 0;
+    box-sizing: border-box;
+  }
+  
+  nav.active {
+    display: flex;
+  }
+  
+  nav a {
+    margin: 0.5rem 0;
+    padding: 0.8rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
+  }
+  
+  nav a:last-child {
+    border-bottom: none;
+  }
+}
 
 section.services {
   background: linear-gradient(135deg, rgba(250,250,250,0.95), rgba(235,235,235,0.9)), url('img/gold-lines.png');
@@ -191,8 +278,11 @@ footer p { margin: 0.5rem 0; color: rgba(255,255,255,0.7); }
 <header>
   <img src="img/logo.PNG" alt="شعار المطبعة" class="logo">
   <div class="title">مطبعة بصمة احتراف</div>
+  <button class="menu-toggle" aria-label="قائمة التنقل">
+    <i class="fas fa-bars"></i>
+  </button>
   <nav>
-    <a href="Home.html">الرئيسية</a>
+    <a href="index.html">الرئيسية</a>
     <a href="services.html">الخدمات</a>
     <a href="clients.html">عملاؤنا</a>
     <a href="contact.html">اتصل بنا</a>
@@ -253,6 +343,32 @@ footer p { margin: 0.5rem 0; color: rgba(255,255,255,0.7); }
 </footer>
 
 <script>
+// قائمة الهمبرجر للموبايل
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+
+menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  const icon = menuToggle.querySelector('i');
+  if (nav.classList.contains('active')) {
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-times');
+  } else {
+    icon.classList.remove('fa-times');
+    icon.classList.add('fa-bars');
+  }
+});
+
+// إغلاق القائمة عند النقر على رابط
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('active');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.remove('fa-times');
+    icon.classList.add('fa-bars');
+  });
+});
+
 // إظهار البطاقات مع حركة عند الظهور
 const cards = document.querySelectorAll('.card');
 const observer = new IntersectionObserver(entries => {

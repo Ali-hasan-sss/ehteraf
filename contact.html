@@ -1,189 +1,342 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اتصل بنا - مطبعة بصمة احتراف</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root {
-  --charcoal: #1c1c1c;
-  --gold: #d4af37;
-  --white: #ffffff;
-  --teal: #00b6b4;
-  --gray-dark: #2c2c2c;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اتصل بنا - مطبعة بصمة احتراف</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --charcoal: #1c1c1c;
+        --gold: #d4af37;
+        --white: #ffffff;
+        --teal: #00b6b4;
+        --gray-dark: #2c2c2c;
+      }
 
-/* عام */
-body {
-  margin: 0;
-  font-family: 'Tajawal', sans-serif;
-  background-color: var(--white);
-  color: var(--charcoal);
-  line-height: 1.7;
-  scroll-behavior: smooth;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1s ease forwards;
-}
-@keyframes fadeIn {
-  to {opacity:1; transform: translateY(0);}
-}
+      /* عام */
+      body {
+        margin: 0;
+        font-family: "Tajawal", sans-serif;
+        background-color: var(--white);
+        color: var(--charcoal);
+        line-height: 1.7;
+        scroll-behavior: smooth;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 1s ease forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-header {
-  background: linear-gradient(90deg, var(--charcoal), #000);
-  color: var(--gold);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-header img.logo {
-  height: 90px; /* تكبير الشعار */
-  width: 90px;
-  border-radius: 50%; /* لجعله دائري */
-  object-fit: cover; /* ليتناسب داخل الدائرة */
-  border: 3px solid var(--gold); /* إطار ذهبي فخم */
-  box-shadow: 0 0 20px rgba(212,175,55,0.4); /* ظل ذهبي خفيف */
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-header img.logo:hover {
-  transform: scale(1.1) rotate(5deg); /* تأثير عصري عند تمرير الماوس */
-  box-shadow: 0 0 30px rgba(212,175,55,0.7);
-}
+      header {
+        background: linear-gradient(90deg, var(--charcoal), #000);
+        color: var(--gold);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      header img.logo {
+        height: 90px; /* تكبير الشعار */
+        width: 90px;
+        border-radius: 50%; /* لجعله دائري */
+        object-fit: cover; /* ليتناسب داخل الدائرة */
+        border: 3px solid var(--gold); /* إطار ذهبي فخم */
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); /* ظل ذهبي خفيف */
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+      header img.logo:hover {
+        transform: scale(1.1) rotate(5deg); /* تأثير عصري عند تمرير الماوس */
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+      }
 
-header .title { font-size: 2rem; font-weight: 800; color: var(--gold); }
-nav a {
-  color: var(--white);
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: 700;
-  transition: color 0.3s, transform 0.3s;
-}
-nav a:hover { color: var(--gold); transform: scale(1.1); }
+      header .title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--gold);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+      }
+      nav a {
+        color: var(--white);
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.3s, transform 0.3s;
+      }
+      nav a:hover {
+        color: var(--gold);
+        transform: scale(1.1);
+      }
 
-/* صفحة الاتصال */
-.contact-section {
-  background: linear-gradient(135deg, rgba(245,245,245,0.9), rgba(230,230,230,0.9)), url('img/gold-lines.png');
-  background-size: cover, auto;
-  background-repeat: no-repeat, repeat;
-  padding: 5rem 2rem;
-  text-align: center;
-}
-.contact-section h2 {
-  font-size: 2.5rem;
-  color: var(--charcoal);
-  margin-bottom: 2rem;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-}
-.contact-info {
-  font-size: 1.2rem;
-  color: var(--gray-dark);
-  margin-bottom: 3rem;
-}
-.contact-info p {
-  margin: 0.5rem 0;
-  transition: transform 0.3s;
-}
-.contact-info p i {
-  color: var(--gold);
-  margin-left: 8px;
-}
-.contact-info p:hover { transform: scale(1.05); color: var(--teal); }
+      /* قائمة الهمبرجر */
+      .menu-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        color: var(--gold);
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: transform 0.3s;
+      }
+      .menu-toggle:hover {
+        transform: scale(1.1);
+      }
 
-/* الباركود */
-.qr-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.qr-item {
-  background: rgba(255,255,255,0.9);
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  padding: 1.5rem;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.qr-item:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-}
-.qr-item img {
-  width: 120px;
-  height: 120px;
-  border-radius: 12px;
-  margin-bottom: 0.8rem;
-}
-.qr-item h3 {
-  font-size: 1.1rem;
-  color: var(--charcoal);
-}
+      /* التجاوب مع الموبايل */
+      @media (max-width: 768px) {
+        body {
+          overflow-x: hidden;
+          max-width: 100%;
+        }
 
-/* Footer */
-footer {
-  background: var(--charcoal);
-  color: var(--white);
-  padding: 2rem;
-  text-align: center;
-  margin-top: 3rem;
-}
-footer p { margin: 0.5rem 0; color: rgba(255,255,255,0.7); }
-footer a { color: var(--gold); text-decoration: none; }
-</style>
-</head>
-<body>
+        html {
+          overflow-x: hidden;
+          max-width: 100%;
+        }
 
-<header>
-  <img src="img/logo.PNG" alt="شعار المطبعة" class="logo">
-  <div class="title">مطبعة بصمة احتراف</div>
-  <nav>
-    <a href="Home.html">الرئيسية</a>
-    <a href="services.html">الخدمات</a>
-    <a href="clients.html">عملاؤنا</a>
-    <a href="contact.html">اتصل بنا</a>
-  </nav>
-</header>
+        header {
+          padding: 0.8rem 1rem;
+          flex-wrap: wrap;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
 
-<section class="contact-section">
-  <h2>اتصل بنا</h2>
-  <div class="contact-info">
-    <p><i class="fas fa-phone"></i> 0502323906</p>
-    <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/Q1c4CSBo3YFKLZaK6" target="_blank" style="color: var(--teal); text-decoration:none;">المملكة العربية السعودية، الرياض</a></p>
-    <p><i class="fas fa-envelope"></i> info@basmatprint.com</p>
-  </div>
+        header img.logo {
+          height: 60px;
+          width: 60px;
+        }
 
-  <div class="qr-gallery">
-    <div class="qr-item">
-      <img src="img/snapchat-qr.jpg" alt="سناب شات">
-      <h3>سناب شات</h3>
-    </div>
-    <div class="qr-item">
-      <img src="img/whatsapp-qr.jpg" alt="واتساب">
-      <h3>واتساب</h3>
-    </div>
-    <div class="qr-item">
-      <img src="img/tiktok-qr.jpg" alt="تيك توك">
-      <h3>تيك توك</h3>
-    </div>
-    <div class="qr-item">
-        <img src="img/insta-qr.jpg" alt="انستاغرام">
-        <h3> انستاغرام</h3>
+        header .title {
+          font-size: 1.2rem;
+          margin: 0 0.5rem;
+        }
+
+        .menu-toggle {
+          display: block;
+          order: 3;
+        }
+
+        nav {
+          display: none;
+          width: 100%;
+          max-width: 100%;
+          flex-direction: column;
+          background: var(--charcoal);
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          padding: 1rem 0;
+          box-sizing: border-box;
+        }
+
+        nav.active {
+          display: flex;
+        }
+
+        nav a {
+          margin: 0.5rem 0;
+          padding: 0.8rem 1rem;
+          width: 100%;
+          max-width: 100%;
+          text-align: center;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          box-sizing: border-box;
+        }
+
+        nav a:last-child {
+          border-bottom: none;
+        }
+      }
+
+      /* صفحة الاتصال */
+      .contact-section {
+        background: linear-gradient(
+            135deg,
+            rgba(245, 245, 245, 0.9),
+            rgba(230, 230, 230, 0.9)
+          ),
+          url("img/gold-lines.png");
+        background-size: cover, auto;
+        background-repeat: no-repeat, repeat;
+        padding: 5rem 2rem;
+        text-align: center;
+      }
+      .contact-section h2 {
+        font-size: 2.5rem;
+        color: var(--charcoal);
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+      }
+      .contact-info {
+        font-size: 1.2rem;
+        color: var(--gray-dark);
+        margin-bottom: 3rem;
+      }
+      .contact-info p {
+        margin: 0.5rem 0;
+        transition: transform 0.3s;
+      }
+      .contact-info p i {
+        color: var(--gold);
+        margin-left: 8px;
+      }
+      .contact-info p:hover {
+        transform: scale(1.05);
+        color: var(--teal);
+      }
+
+      /* الباركود */
+      .qr-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+        justify-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .qr-item {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        padding: 1.5rem;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+      .qr-item:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+      }
+      .qr-item img {
+        width: 120px;
+        height: 120px;
+        border-radius: 12px;
+        margin-bottom: 0.8rem;
+      }
+      .qr-item h3 {
+        font-size: 1.1rem;
+        color: var(--charcoal);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--charcoal);
+        color: var(--white);
+        padding: 2rem;
+        text-align: center;
+        margin-top: 3rem;
+      }
+      footer p {
+        margin: 0.5rem 0;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      footer a {
+        color: var(--gold);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="img/logo.PNG" alt="شعار المطبعة" class="logo" />
+      <div class="title">مطبعة بصمة احتراف</div>
+      <button class="menu-toggle" aria-label="قائمة التنقل">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="services.html">الخدمات</a>
+        <a href="clients.html">عملاؤنا</a>
+        <a href="contact.html">اتصل بنا</a>
+      </nav>
+    </header>
+
+    <section class="contact-section">
+      <h2>اتصل بنا</h2>
+      <div class="contact-info">
+        <p><i class="fas fa-phone"></i> 0502323906</p>
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          <a
+            href="https://maps.app.goo.gl/Q1c4CSBo3YFKLZaK6"
+            target="_blank"
+            style="color: var(--teal); text-decoration: none"
+            >المملكة العربية السعودية، الرياض</a
+          >
+        </p>
+        <p><i class="fas fa-envelope"></i> info@basmatprint.com</p>
       </div>
 
-  </div>
-</section>
+      <div class="qr-gallery">
+        <div class="qr-item">
+          <img src="img/snapchat-qr.jpg" alt="سناب شات" />
+          <h3>سناب شات</h3>
+        </div>
+        <div class="qr-item">
+          <img src="img/whatsapp-qr.jpg" alt="واتساب" />
+          <h3>واتساب</h3>
+        </div>
+        <div class="qr-item">
+          <img src="img/tiktok-qr.jpg" alt="تيك توك" />
+          <h3>تيك توك</h3>
+        </div>
+        <div class="qr-item">
+          <img src="img/insta-qr.jpg" alt="انستاغرام" />
+          <h3>انستاغرام</h3>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <p>© 2025 جميع الحقوق محفوظة - مطبعة بصمة احتراف</p>
-</footer>
+    <footer>
+      <p>© 2025 جميع الحقوق محفوظة - مطبعة بصمة احتراف</p>
+    </footer>
 
-</body>
+    <script>
+      // قائمة الهمبرجر للموبايل
+      const menuToggle = document.querySelector(".menu-toggle");
+      const nav = document.querySelector("nav");
+
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+        const icon = menuToggle.querySelector("i");
+        if (nav.classList.contains("active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        }
+      });
+
+      // إغلاق القائمة عند النقر على رابط
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("active");
+          const icon = menuToggle.querySelector("i");
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        });
+      });
+    </script>
+  </body>
 </html>

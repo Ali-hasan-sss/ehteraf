@@ -1,136 +1,308 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>كتالوج المنتجات - مطبعة بصمة احتراف</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root {
-  --charcoal: #1c1c1c;
-  --gold: #d4af37;
-  --white: #ffffff;
-  --gray-light: #f0f0f0;
-}
-body {
-  margin: 0;
-  font-family: 'Tajawal', sans-serif;
-  background: var(--white);
-  color: var(--charcoal);
-  line-height: 1.7;
-}
-header {
-  background: linear-gradient(90deg, var(--charcoal), #000000);
-  color: var(--gold);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-header .title {
-  font-size: 2rem;
-  font-weight: 800;
-}
-nav a {
-  color: var(--white);
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: 700;
-  transition: 0.3s;
-}
-nav a:hover {color: var(--gold);} 
-.catalog-section {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: var(--gray-light);
-}
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-.product-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  padding: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-}
-.product-card img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-.product-card h3 {margin: 1rem 0 0.5rem; color: var(--charcoal);} 
-.footer {
-  background: var(--charcoal);
-  color: var(--white);
-  padding: 3rem 2rem;
-  text-align: center;
-  margin-top: 3rem;
-}
-.whatsapp-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #25d366;
-  color: white;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  text-decoration: none;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  z-index: 999999;
-}
-</style>
-</head>
-<body>
-<header>
-  <div class="title">مطبعة بصمة احتراف</div>
-  <nav>
-    <a href="Home.html">الرئيسية</a>
-    <a href="Catalog.html">الكتالوج</a>
-  </nav>
-</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>كتالوج المنتجات - مطبعة بصمة احتراف</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --charcoal: #1c1c1c;
+        --gold: #d4af37;
+        --white: #ffffff;
+        --gray-light: #f0f0f0;
+      }
+      body {
+        margin: 0;
+        font-family: "Tajawal", sans-serif;
+        background: var(--white);
+        color: var(--charcoal);
+        line-height: 1.7;
+      }
+      header {
+        background: linear-gradient(90deg, var(--charcoal), #000000);
+        color: var(--gold);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      header .title {
+        font-size: 2rem;
+        font-weight: 800;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+      }
+      nav a {
+        color: var(--white);
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: 0.3s;
+      }
+      nav a:hover {
+        color: var(--gold);
+      }
 
-<section class="catalog-section">
-  <h2>كتالوج المنتجات</h2>
-  <div class="catalog-grid">
-    <div class="product-card"><img src="img/p1.jpg"><h3>رول أب فاخر</h3></div>
-    <div class="product-card"><img src="img/p2.jpg"><h3>أعلام مكتبية</h3></div>
-    <div class="product-card"><img src="img/p3.jpg"><h3>بنرات طباعة عالية الجودة</h3></div>
-    <div class="product-card"><img src="img/p4.jpg"><h3>طباعة لوحات أكريليك</h3></div>
-    <div class="product-card"><img src="img/p5.jpg"><h3>دفاتر ملاحظات</h3></div>
-    <div class="product-card"><img src="img/p6.jpg"><h3>أقلام دعائية</h3></div>
-    <div class="product-card"><img src="img/p7.jpg"><h3>بطاقات أعمال</h3></div>
-    <div class="product-card"><img src="img/p8.jpg"><h3>ميداليات معدنية</h3></div>
-    <div class="product-card"><img src="img/p9.jpg"><h3>أظرف فاخره</h3></div>
-    <div class="product-card"><img src="img/p10.jpg"><h3>كتيبات تعريفية</h3></div>
-    <div class="product-card"><img src="img/p11.jpg"><h3>طباعة شمسيات</h3></div>
-    <div class="product-card"><img src="img/p12.jpg"><h3>ستاندات إعلانية</h3></div>
-    <div class="product-card"><img src="img/p13.jpg"><h3>مجسمات ودروع</h3></div>
-    <div class="product-card"><img src="img/p14.jpg"><h3>فواتير طباعة NCR</h3></div>
-    <div class="product-card"><img src="img/p15.jpg"><h3>نوت بوك جلد فاخر</h3></div>
-  </div>
-</section>
+      /* قائمة الهمبرجر */
+      .menu-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        color: var(--gold);
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: transform 0.3s;
+      }
+      .menu-toggle:hover {
+        transform: scale(1.1);
+      }
 
-<div class="footer">© 2025 جميع الحقوق محفوظة</div>
+      /* التجاوب مع الموبايل */
+      @media (max-width: 768px) {
+        body {
+          overflow-x: hidden;
+          max-width: 100%;
+        }
 
-<a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        html {
+          overflow-x: hidden;
+          max-width: 100%;
+        }
 
-</body>
+        header {
+          padding: 0.8rem 1rem;
+          flex-wrap: wrap;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+
+        header .title {
+          font-size: 1.2rem;
+          margin: 0 0.5rem;
+        }
+
+        .menu-toggle {
+          display: block;
+          order: 3;
+        }
+
+        nav {
+          display: none;
+          width: 100%;
+          max-width: 100%;
+          flex-direction: column;
+          background: var(--charcoal);
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          padding: 1rem 0;
+          box-sizing: border-box;
+        }
+
+        nav.active {
+          display: flex;
+        }
+
+        nav a {
+          margin: 0.5rem 0;
+          padding: 0.8rem 1rem;
+          width: 100%;
+          max-width: 100%;
+          text-align: center;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          box-sizing: border-box;
+        }
+
+        nav a:last-child {
+          border-bottom: none;
+        }
+      }
+      .catalog-section {
+        padding: 4rem 2rem;
+        text-align: center;
+        background: var(--gray-light);
+      }
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      .product-card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        padding: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      }
+      .product-card img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+      .product-card h3 {
+        margin: 1rem 0 0.5rem;
+        color: var(--charcoal);
+      }
+      .footer {
+        background: var(--charcoal);
+        color: var(--white);
+        padding: 3rem 2rem;
+        text-align: center;
+        margin-top: 3rem;
+      }
+      .whatsapp-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: #25d366;
+        color: white;
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        text-decoration: none;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        z-index: 999999;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="title">مطبعة بصمة احتراف</div>
+      <button class="menu-toggle" aria-label="قائمة التنقل">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="Catalog.html">الكتالوج</a>
+      </nav>
+    </header>
+
+    <section class="catalog-section">
+      <h2>كتالوج المنتجات</h2>
+      <div class="catalog-grid">
+        <div class="product-card">
+          <img src="img/p1.jpg" />
+          <h3>رول أب فاخر</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p2.jpg" />
+          <h3>أعلام مكتبية</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p3.jpg" />
+          <h3>بنرات طباعة عالية الجودة</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p4.jpg" />
+          <h3>طباعة لوحات أكريليك</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p5.jpg" />
+          <h3>دفاتر ملاحظات</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p6.jpg" />
+          <h3>أقلام دعائية</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p7.jpg" />
+          <h3>بطاقات أعمال</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p8.jpg" />
+          <h3>ميداليات معدنية</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p9.jpg" />
+          <h3>أظرف فاخره</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p10.jpg" />
+          <h3>كتيبات تعريفية</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p11.jpg" />
+          <h3>طباعة شمسيات</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p12.jpg" />
+          <h3>ستاندات إعلانية</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p13.jpg" />
+          <h3>مجسمات ودروع</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p14.jpg" />
+          <h3>فواتير طباعة NCR</h3>
+        </div>
+        <div class="product-card">
+          <img src="img/p15.jpg" />
+          <h3>نوت بوك جلد فاخر</h3>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© 2025 جميع الحقوق محفوظة</div>
+
+    <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank"
+      ><i class="fab fa-whatsapp"></i
+    ></a>
+
+    <script>
+      // قائمة الهمبرجر للموبايل
+      const menuToggle = document.querySelector(".menu-toggle");
+      const nav = document.querySelector("nav");
+
+      if (menuToggle && nav) {
+        menuToggle.addEventListener("click", () => {
+          nav.classList.toggle("active");
+          const icon = menuToggle.querySelector("i");
+          if (nav.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
+        });
+
+        // إغلاق القائمة عند النقر على رابط
+        nav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            nav.classList.remove("active");
+            const icon = menuToggle.querySelector("i");
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          });
+        });
+      }
+    </script>
+  </body>
 </html>
