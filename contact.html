@@ -29,10 +29,15 @@
         color: var(--charcoal);
         line-height: 1.7;
         scroll-behavior: smooth;
+      }
+
+      /* Wrapper للمحتوى مع animation */
+      .page-wrapper {
         opacity: 0;
         transform: translateY(20px);
         animation: fadeIn 1s ease forwards;
       }
+
       @keyframes fadeIn {
         to {
           opacity: 1;
@@ -81,10 +86,25 @@
         text-decoration: none;
         font-weight: 700;
         transition: color 0.3s, transform 0.3s;
+        position: relative;
+        padding-bottom: 5px;
       }
       nav a:hover {
         color: var(--gold);
         transform: scale(1.1);
+      }
+      nav a.active {
+        color: var(--gold);
+      }
+      nav a.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 3px;
+        background: var(--gold);
+        border-radius: 2px;
       }
 
       /* قائمة الهمبرجر */
@@ -167,6 +187,14 @@
 
         nav a:last-child {
           border-bottom: none;
+        }
+
+        nav a.active {
+          color: var(--gold);
+          border-bottom: 3px solid var(--gold);
+        }
+        nav a.active::after {
+          display: none;
         }
       }
 
@@ -254,89 +282,194 @@
         color: var(--gold);
         text-decoration: none;
       }
+
+      /* Wrapper للزر العائم */
+      .whatsapp-wrapper {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 20px !important;
+        z-index: 999999 !important;
+        pointer-events: none !important;
+        transform: translateZ(0) !important;
+        will-change: transform !important;
+        isolation: isolate !important;
+      }
+
+      @media (max-width: 768px) {
+        .whatsapp-wrapper {
+          bottom: 15px !important;
+          left: 15px !important;
+        }
+      }
+
+      /* ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ */
+      .whatsapp-btn {
+        position: relative !important;
+        background: #25d366 !important;
+        color: white !important;
+        width: 65px !important;
+        height: 65px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        font-size: 32px !important;
+        text-decoration: none !important;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
+        animation: pulseWhatsapp 1.8s infinite !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        outline: none !important;
+        pointer-events: auto !important;
+        will-change: transform !important;
+        backface-visibility: hidden !important;
+      }
+
+      @keyframes pulseWhatsapp {
+        0% {
+          transform: scale(1) !important;
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
+        }
+        50% {
+          transform: scale(1.08) !important;
+          box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6) !important;
+        }
+        100% {
+          transform: scale(1) !important;
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
+        }
+      }
+      .whatsapp-btn:hover {
+        transform: scale(1.15) !important;
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7) !important;
+      }
+
+      @media (max-width: 768px) {
+        .whatsapp-btn {
+          width: 60px !important;
+          height: 60px !important;
+          font-size: 28px !important;
+        }
+      }
     </style>
   </head>
   <body>
-    <header>
-      <img src="img/logo.PNG" alt="شعار المطبعة" class="logo" />
-      <div class="title">مطبعة بصمة احتراف</div>
-      <button class="menu-toggle" aria-label="قائمة التنقل">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav>
-        <a href="index.html">الرئيسية</a>
-        <a href="services.html">الخدمات</a>
-        <a href="clients.html">عملاؤنا</a>
-        <a href="contact.html">اتصل بنا</a>
-      </nav>
-    </header>
+    <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON WRAPPER ⭐⭐⭐ -->
+    <div class="whatsapp-wrapper">
+      <a
+        href="https://wa.me/966502323906"
+        class="whatsapp-btn"
+        target="_blank"
+        aria-label="تواصل معنا على واتساب"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
 
-    <section class="contact-section">
-      <h2>اتصل بنا</h2>
-      <div class="contact-info">
-        <p><i class="fas fa-phone"></i> 0502323906</p>
-        <p>
-          <i class="fas fa-map-marker-alt"></i>
-          <a
-            href="https://maps.app.goo.gl/Q1c4CSBo3YFKLZaK6"
-            target="_blank"
-            style="color: var(--teal); text-decoration: none"
-            >المملكة العربية السعودية، الرياض</a
-          >
-        </p>
-        <p><i class="fas fa-envelope"></i> info@basmatprint.com</p>
-      </div>
+    <div class="page-wrapper">
+      <header>
+        <img src="img/logo.PNG" alt="شعار المطبعة" class="logo" />
+        <div class="title">مطبعة بصمة احتراف</div>
+        <button class="menu-toggle" aria-label="قائمة التنقل">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+          <a href="index.html">الرئيسية</a>
+          <a href="index.html#about">من نحن</a>
+          <a href="services.html">الخدمات</a>
+          <a href="clients.html">عملاؤنا</a>
+          <a href="contact.html">اتصل بنا</a>
+          <a href="Catalog.html">المعرض</a>
+        </nav>
+      </header>
 
-      <div class="qr-gallery">
-        <div class="qr-item">
-          <img src="img/snapchat-qr.jpg" alt="سناب شات" />
-          <h3>سناب شات</h3>
+      <section class="contact-section">
+        <h2>اتصل بنا</h2>
+        <div class="contact-info">
+          <p><i class="fas fa-phone"></i> 0502323906</p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <a
+              href="https://maps.app.goo.gl/Q1c4CSBo3YFKLZaK6"
+              target="_blank"
+              style="color: var(--teal); text-decoration: none"
+              >المملكة العربية السعودية، حائل</a
+            >
+          </p>
+          <p><i class="fas fa-envelope"></i> info@basmatprint.com</p>
         </div>
-        <div class="qr-item">
-          <img src="img/whatsapp-qr.jpg" alt="واتساب" />
-          <h3>واتساب</h3>
+
+        <div class="qr-gallery">
+          <div class="qr-item">
+            <img src="img/snapchat-qr.jpg" alt="سناب شات" />
+            <h3>سناب شات</h3>
+          </div>
+          <div class="qr-item">
+            <img src="img/whatsapp-qr.jpg" alt="واتساب" />
+            <h3>واتساب</h3>
+          </div>
+          <div class="qr-item">
+            <img src="img/tiktok-qr.jpg" alt="تيك توك" />
+            <h3>تيك توك</h3>
+          </div>
+          <div class="qr-item">
+            <img src="img/insta-qr.jpg" alt="انستغرام" />
+            <h3>انستغرام</h3>
+          </div>
         </div>
-        <div class="qr-item">
-          <img src="img/tiktok-qr.jpg" alt="تيك توك" />
-          <h3>تيك توك</h3>
-        </div>
-        <div class="qr-item">
-          <img src="img/insta-qr.jpg" alt="انستاغرام" />
-          <h3>انستاغرام</h3>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <footer>
-      <p>© 2025 جميع الحقوق محفوظة - مطبعة بصمة احتراف</p>
-    </footer>
+      <footer>
+        <p>© 2025 جميع الحقوق محفوظة - مطبعة بصمة احتراف</p>
+      </footer>
 
-    <script>
-      // قائمة الهمبرجر للموبايل
-      const menuToggle = document.querySelector(".menu-toggle");
-      const nav = document.querySelector("nav");
+      <script>
+        // قائمة الهمبرجر للموبايل
+        const menuToggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav");
 
-      menuToggle.addEventListener("click", () => {
-        nav.classList.toggle("active");
-        const icon = menuToggle.querySelector("i");
-        if (nav.classList.contains("active")) {
-          icon.classList.remove("fa-bars");
-          icon.classList.add("fa-times");
-        } else {
-          icon.classList.remove("fa-times");
-          icon.classList.add("fa-bars");
-        }
-      });
-
-      // إغلاق القائمة عند النقر على رابط
-      nav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          nav.classList.remove("active");
+        menuToggle.addEventListener("click", () => {
+          nav.classList.toggle("active");
           const icon = menuToggle.querySelector("i");
-          icon.classList.remove("fa-times");
-          icon.classList.add("fa-bars");
+          if (nav.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
         });
-      });
-    </script>
+
+        // إغلاق القائمة عند النقر على رابط
+        nav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            nav.classList.remove("active");
+            const icon = menuToggle.querySelector("i");
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          });
+        });
+
+        // تحديد التاب النشط في الهيدر
+        const currentPage =
+          window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll("nav a");
+
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (
+            href &&
+            (href.includes("contact.html") || href === "contact.html")
+          ) {
+            link.classList.add("active");
+          }
+        });
+      </script>
+    </div>
+    <!-- End page-wrapper -->
   </body>
 </html>

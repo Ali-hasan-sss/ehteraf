@@ -25,6 +25,7 @@
         background: var(--white);
         color: var(--charcoal);
         line-height: 1.7;
+        scroll-behavior: smooth;
       }
       header {
         background: linear-gradient(90deg, var(--charcoal), #000000);
@@ -36,10 +37,26 @@
         position: sticky;
         top: 0;
         z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      header img.logo {
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--gold);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+      header img.logo:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
       }
       header .title {
         font-size: 2rem;
         font-weight: 800;
+        color: var(--gold);
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
       }
       nav {
         display: flex;
@@ -51,9 +68,24 @@
         text-decoration: none;
         font-weight: 700;
         transition: 0.3s;
+        position: relative;
+        padding-bottom: 5px;
       }
       nav a:hover {
         color: var(--gold);
+      }
+      nav a.active {
+        color: var(--gold);
+      }
+      nav a.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 3px;
+        background: var(--gold);
+        border-radius: 2px;
       }
 
       /* قائمة الهمبرجر */
@@ -88,6 +120,11 @@
           flex-wrap: wrap;
           max-width: 100%;
           box-sizing: border-box;
+        }
+
+        header img.logo {
+          height: 60px;
+          width: 60px;
         }
 
         header .title {
@@ -132,6 +169,14 @@
         nav a:last-child {
           border-bottom: none;
         }
+
+        nav a.active {
+          color: var(--gold);
+          border-bottom: 3px solid var(--gold);
+        }
+        nav a.active::after {
+          display: none;
+        }
       }
       .catalog-section {
         padding: 4rem 2rem;
@@ -172,34 +217,106 @@
         text-align: center;
         margin-top: 3rem;
       }
+      /* Wrapper للزر العائم */
+      .whatsapp-wrapper {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 20px !important;
+        z-index: 999999 !important;
+        pointer-events: none !important;
+        transform: translateZ(0) !important;
+        will-change: transform !important;
+        isolation: isolate !important;
+      }
+
+      @media (max-width: 768px) {
+        .whatsapp-wrapper {
+          bottom: 15px !important;
+          left: 15px !important;
+        }
+      }
+
+      /* ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ */
       .whatsapp-btn {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        background: #25d366;
-        color: white;
-        width: 65px;
-        height: 65px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 32px;
-        text-decoration: none;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        z-index: 999999;
+        position: relative !important;
+        background: #25d366 !important;
+        color: white !important;
+        width: 65px !important;
+        height: 65px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        font-size: 32px !important;
+        text-decoration: none !important;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
+        animation: pulseWhatsapp 1.8s infinite !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        outline: none !important;
+        pointer-events: auto !important;
+        will-change: transform !important;
+        backface-visibility: hidden !important;
+      }
+
+      @keyframes pulseWhatsapp {
+        0% {
+          transform: scale(1) !important;
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
+        }
+        50% {
+          transform: scale(1.08) !important;
+          box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6) !important;
+        }
+        100% {
+          transform: scale(1) !important;
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
+        }
+      }
+      .whatsapp-btn:hover {
+        transform: scale(1.15) !important;
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7) !important;
+      }
+
+      @media (max-width: 768px) {
+        .whatsapp-btn {
+          width: 60px !important;
+          height: 60px !important;
+          font-size: 28px !important;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON WRAPPER ⭐⭐⭐ -->
+    <div class="whatsapp-wrapper">
+      <a
+        href="https://wa.me/966502323906"
+        class="whatsapp-btn"
+        target="_blank"
+        aria-label="تواصل معنا على واتساب"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+
     <header>
+      <img src="img/logo.PNG" alt="شعار المطبعة" class="logo" />
       <div class="title">مطبعة بصمة احتراف</div>
       <button class="menu-toggle" aria-label="قائمة التنقل">
         <i class="fas fa-bars"></i>
       </button>
       <nav>
         <a href="index.html">الرئيسية</a>
-        <a href="Catalog.html">الكتالوج</a>
+        <a href="index.html#about">من نحن</a>
+        <a href="services.html">الخدمات</a>
+        <a href="clients.html">عملاؤنا</a>
+        <a href="contact.html">اتصل بنا</a>
+        <a href="Catalog.html">المعرض</a>
       </nav>
     </header>
 
@@ -271,10 +388,6 @@
 
     <div class="footer">© 2025 جميع الحقوق محفوظة</div>
 
-    <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank"
-      ><i class="fab fa-whatsapp"></i
-    ></a>
-
     <script>
       // قائمة الهمبرجر للموبايل
       const menuToggle = document.querySelector(".menu-toggle");
@@ -301,6 +414,21 @@
             icon.classList.remove("fa-times");
             icon.classList.add("fa-bars");
           });
+        });
+
+        // تحديد التاب النشط في الهيدر
+        const currentPage =
+          window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll("nav a");
+
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (
+            href &&
+            (href.includes("Catalog.html") || href === "Catalog.html")
+          ) {
+            link.classList.add("active");
+          }
         });
       }
     </script>

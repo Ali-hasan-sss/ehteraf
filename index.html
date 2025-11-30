@@ -31,10 +31,15 @@
         color: var(--charcoal);
         line-height: 1.7;
         scroll-behavior: smooth;
+      }
+
+      /* Wrapper للمحتوى مع animation */
+      .page-wrapper {
         opacity: 0;
         transform: translateY(20px);
         animation: pageFadeIn 1s ease forwards;
       }
+
       @keyframes pageFadeIn {
         to {
           opacity: 1;
@@ -98,10 +103,25 @@
         font-weight: 700;
         font-size: 1rem;
         transition: color 0.3s, transform 0.3s;
+        position: relative;
+        padding-bottom: 5px;
       }
       nav a:hover {
         color: var(--gold);
         transform: scale(1.1);
+      }
+      nav a.active {
+        color: var(--gold);
+      }
+      nav a.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 3px;
+        background: var(--gold);
+        border-radius: 2px;
       }
 
       /* قائمة الهمبرجر */
@@ -184,6 +204,44 @@
 
         nav a:last-child {
           border-bottom: none;
+        }
+
+        nav a.active {
+          color: var(--gold);
+          border-bottom: 3px solid var(--gold);
+        }
+        nav a.active::after {
+          display: none;
+        }
+
+        /* فلتر الأقسام للموبايل */
+        .filter-buttons {
+          gap: 0.5rem;
+          padding: 0 1rem;
+        }
+        .filter-buttons button {
+          padding: 0.5rem 1rem;
+          font-size: 0.85rem;
+        }
+
+        /* بطاقات الخدمات للموبايل */
+        .service-container {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          padding: 0 1rem;
+        }
+        .card {
+          padding: 1.5rem;
+        }
+        .card img.service-image {
+          width: 100px;
+          height: 100px;
+        }
+        .card h3 {
+          font-size: 1.2rem;
+        }
+        .card p {
+          font-size: 0.9rem;
         }
       }
 
@@ -327,20 +385,87 @@
         background-repeat: no-repeat, repeat;
         background-position: center;
       }
-      .features {
+
+      /* فلتر الأقسام */
+      .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+      }
+      .filter-buttons button {
+        background: var(--charcoal);
+        color: var(--white);
+        border: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.3s;
+      }
+      .filter-buttons button.active,
+      .filter-buttons button:hover {
+        background: var(--gold);
+        color: var(--charcoal);
+        transform: scale(1.05);
+      }
+
+      /* بطاقات الخدمات */
+      .service-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
-        margin-top: 3rem;
       }
-      .feature {
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
+      .card {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         padding: 2rem;
-        border-radius: 16px;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
         opacity: 0;
         transform: translateY(20px);
-        animation: fadeInUp 1s ease forwards;
+      }
+      .card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      }
+      .card img.service-image {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        animation: imageFloat 3s infinite ease-in-out;
+      }
+      .card:hover img.service-image {
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+      }
+      @keyframes imageFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      .card h3 {
+        font-size: 1.4rem;
+        color: var(--charcoal);
+        margin-bottom: 0.7rem;
+      }
+      .card p {
+        color: var(--gray-dark);
+        font-size: 1rem;
+        line-height: 1.6;
       }
 
       /* Testimonials */
@@ -375,202 +500,447 @@
         padding: 3rem 2rem;
       }
 
+      /* Wrapper للزر العائم */
+      .whatsapp-wrapper {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 20px !important;
+        z-index: 999999 !important;
+        pointer-events: none !important;
+        transform: translateZ(0) !important;
+        will-change: transform !important;
+        isolation: isolate !important;
+      }
+
+      @media (max-width: 768px) {
+        .whatsapp-wrapper {
+          bottom: 15px !important;
+          left: 15px !important;
+        }
+      }
+
       /* ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ */
       .whatsapp-btn {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        background: #25d366;
-        color: white;
-        width: 65px;
-        height: 65px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 32px;
-        text-decoration: none;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        z-index: 999999; /* أكبر رقم لضمان ظهوره */
-        animation: pulseWhatsapp 1.8s infinite;
+        position: relative !important;
+        background: #25d366 !important;
+        color: white !important;
+        width: 65px !important;
+        height: 65px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        font-size: 32px !important;
+        text-decoration: none !important;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
+        animation: pulseWhatsapp 1.8s infinite !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        outline: none !important;
+        pointer-events: auto !important;
+        will-change: transform !important;
+        backface-visibility: hidden !important;
       }
 
       @keyframes pulseWhatsapp {
         0% {
-          transform: scale(1);
+          transform: scale(1) !important;
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
         }
         50% {
-          transform: scale(1.08);
+          transform: scale(1.08) !important;
+          box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6) !important;
         }
         100% {
-          transform: scale(1);
+          transform: scale(1) !important;
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
         }
       }
       .whatsapp-btn:hover {
-        transform: scale(1.15);
+        transform: scale(1.15) !important;
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7) !important;
+      }
+
+      /* تحسين على الموبايل */
+      @media (max-width: 768px) {
+        .whatsapp-btn {
+          width: 60px !important;
+          height: 60px !important;
+          font-size: 28px !important;
+        }
       }
     </style>
   </head>
 
   <body>
-    <header>
-      <img src="img/logo.PNG" alt="شعار المطبعة" class="logo" />
-      <div class="title">مطبعة بصمة احتراف</div>
-      <button class="menu-toggle" aria-label="قائمة التنقل">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav>
-        <a href="#home">الرئيسية</a>
-        <a href="#about">من نحن</a>
-        <a href="services.html">الخدمات</a>
-        <a href="#clients">عملاؤنا</a>
-        <a href="contact.html">اتصل بنا</a>
-        <a href="Catalog.html">المعرض </a>
-      </nav>
-    </header>
-
-    <div class="slider">
-      <div
-        class="slide active"
-        style="background-image: url('img/serv1.png')"
-      ></div>
-      <div class="slide" style="background-image: url('img/serv2.png')"></div>
-      <div class="slide" style="background-image: url('img/serv3.png')"></div>
-      <div class="slide" style="background-image: url('img/serv4.jpg')"></div>
-      <div class="slide" style="background-image: url('img/serv5.jpg')"></div>
-
-      <div class="slider-text">
-        <h2>حلول طباعية عصرية</h2>
-        <p>جودة عالية – سرعة في التنفيذ – ابتكار دائم</p>
-        <a href="#services">استكشف خدماتنا</a>
-      </div>
+    <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON WRAPPER ⭐⭐⭐ -->
+    <div class="whatsapp-wrapper">
+      <a
+        href="https://wa.me/966502323906"
+        class="whatsapp-btn"
+        target="_blank"
+        aria-label="تواصل معنا على واتساب"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
     </div>
-    <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-    <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
-      <i class="fab fa-whatsapp"></i>
-    </a>
 
-    <section id="about" class="intro">
-      <h2>نبذة عنا</h2>
-      <p>
-        في مطبعة بصمة احتراف، نقدم حلولاً طباعية وإعلانية عصرية، تجمع بين
-        الحرفية العالية والابتكار المستمر لتترك بصمة مميزة لدى عملائنا.
-      </p>
-      <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-      <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-    </section>
+    <div class="page-wrapper">
+      <header>
+        <img src="img/logo.PNG" alt="شعار المطبعة" class="logo" />
+        <div class="title">مطبعة بصمة احتراف</div>
+        <button class="menu-toggle" aria-label="قائمة التنقل">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+          <a href="#home">الرئيسية</a>
+          <a href="#about">من نحن</a>
+          <a href="services.html">الخدمات</a>
+          <a href="#clients">عملاؤنا</a>
+          <a href="contact.html">اتصل بنا</a>
+          <a href="Catalog.html">المعرض </a>
+        </nav>
+      </header>
 
-    <section id="services">
-      <h2>خدماتنا</h2>
-      <div class="features">
-        <div class="feature">
-          <i class="fas fa-gift"></i>
-          <h3>الهدايا الدعائية</h3>
-          <p>اعلام، ميداليات، أقلام، فلاشات، نوت بوك والمزيد.</p>
-        </div>
-        <div class="feature">
-          <i class="fas fa-file-invoice"></i>
-          <h3>المطبوعات التجارية</h3>
-          <p>فواتير، بروشورات، عقود، أظرف، كتيبات.</p>
-        </div>
-        <div class="feature">
-          <i class="fas fa-award"></i>
-          <h3>الدروع التذكارية</h3>
-          <p>سيوف، دروع جلدية، مجسمات فاخرة.</p>
-        </div>
-        <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-        <a
-          href="https://wa.me/966502323906"
-          class="whatsapp-btn"
-          target="_blank"
-        >
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </div>
-      <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-      <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-    </section>
+      <div class="slider">
+        <div
+          class="slide active"
+          style="background-image: url('img/serv1.png')"
+        ></div>
+        <div class="slide" style="background-image: url('img/serv2.png')"></div>
+        <div class="slide" style="background-image: url('img/serv3.png')"></div>
+        <div class="slide" style="background-image: url('img/serv4.jpg')"></div>
+        <div class="slide" style="background-image: url('img/serv5.jpg')"></div>
 
-    <section id="clients" class="testimonials">
-      <h2>آراء العملاء</h2>
-      <div class="testimonial-container">
-        <div class="testimonial">
-          <div class="user-icon"><i class="fas fa-user-circle"></i></div>
-          <p>أفضل مطبعة تعاملت معها، دقة وجودة عالية.</p>
-          <span class="client-name">– عميل 1</span>
-        </div>
-
-        <div class="testimonial">
-          <div class="user-icon"><i class="fas fa-user-circle"></i></div>
-          <p>خدمة سريعة واحترافية، أنصح بهم بشدة.</p>
-          <span class="client-name">– عميل 2</span>
+        <div class="slider-text">
+          <h2>حلول طباعية عصرية</h2>
+          <p>جودة عالية – سرعة في التنفيذ – ابتكار دائم</p>
+          <a href="#services">استكشف خدماتنا</a>
         </div>
       </div>
-      <!-- ⭐⭐⭐ FLOATING WHATSAPP BUTTON ⭐⭐⭐ -->
-      <a href="https://wa.me/966502323906" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-    </section>
+      <section id="about" class="intro">
+        <h2>نبذة عنا</h2>
+        <p>
+          في مطبعة بصمة احتراف، نقدم حلولاً طباعية وإعلانية عصرية، تجمع بين
+          الحرفية العالية والابتكار المستمر لتترك بصمة مميزة لدى عملائنا.
+        </p>
+      </section>
 
-    <footer id="contact">
-      <p style="margin-top: 1.5rem">
-        © 2025 جميع الحقوق محفوظة - مطبعة بصمة احتراف
-      </p>
-    </footer>
+      <section id="services" class="services">
+        <h2>خدماتنا</h2>
 
-    <script>
-      // قائمة الهمبرجر للموبايل
-      const menuToggle = document.querySelector(".menu-toggle");
-      const nav = document.querySelector("nav");
+        <div class="filter-buttons">
+          <button class="active" data-filter="all">الكل</button>
+          <button data-filter="gifts">هدايا دعائية</button>
+          <button data-filter="boxes">بوكسات</button>
+          <button data-filter="bags">اكياس</button>
+          <button data-filter="stamps">اختام</button>
+          <button data-filter="cups">اكواب</button>
+          <button data-filter="laser">قص وحفر ليزر</button>
+          <button data-filter="signs">لوحات مكتبية</button>
+          <button data-filter="shields">دروع تذكارية</button>
+          <button data-filter="prints">مطبوعات تجارية</button>
+          <button data-filter="lights">لوحات حروف مضيئة</button>
+          <button data-filter="stickers">استيكر</button>
+          <button data-filter="coffee">بوكس قهوة</button>
+        </div>
 
-      menuToggle.addEventListener("click", () => {
-        nav.classList.toggle("active");
-        const icon = menuToggle.querySelector("i");
-        if (nav.classList.contains("active")) {
-          icon.classList.remove("fa-bars");
-          icon.classList.add("fa-times");
-        } else {
-          icon.classList.remove("fa-times");
-          icon.classList.add("fa-bars");
-        }
-      });
+        <div class="service-container">
+          <div class="card gifts">
+            <img
+              src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=400&fit=crop"
+              alt="هدايا دعائية"
+              class="service-image"
+            />
+            <h3>هدايا دعائية</h3>
+            <p>
+              اعلام، ميداليات، مكعبات فور اكس، مجسمات فلين، استاندات، ملفات جلد،
+              بوكسات جلد فاخر، بوكس هارد كفر، أقلام، فلاشات، نوت بوك، وشاح.
+            </p>
+          </div>
+          <div class="card boxes">
+            <img
+              src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop"
+              alt="بوكسات"
+              class="service-image"
+            />
+            <h3>بوكسات</h3>
+            <p>
+              حلا، كوكيز، لقيمات، خلية، عبايات، شوكولا، مطاعم، وجبات، شاورما،
+              بوكس المضغوط، شحن، تفصيل حسب الطلب.
+            </p>
+          </div>
+          <div class="card bags">
+            <img
+              src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop"
+              alt="اكياس"
+              class="service-image"
+            />
+            <h3>اكياس</h3>
+            <p>
+              ورقية، كرتونية، وجبات، مطاعم، ساندويتش، كروسان، كوكيز، كرافت،
+              عبايات.
+            </p>
+          </div>
+          <div class="card stamps">
+            <img
+              src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&h=400&fit=crop"
+              alt="اختام"
+              class="service-image"
+            />
+            <h3>اختام</h3>
+            <p>كريستال، اتوماتيك، خشب.</p>
+          </div>
+          <div class="card cups">
+            <img
+              src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=400&fit=crop"
+              alt="اكواب"
+              class="service-image"
+            />
+            <h3>اكواب</h3>
+            <p>ورقية، بلاستيك، حار وبارد، شاهي وقهوة، قهوة اليوم، اسبريسو.</p>
+          </div>
+          <div class="card laser">
+            <img
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop"
+              alt="قص وحفر ليزر"
+              class="service-image"
+            />
+            <h3>قص وحفر ليزر</h3>
+            <p>
+              تفصيل دروع، قص ألواح أكريليك، استاندات أعراس، تخرج، بروشات، نيم
+              تاج، ميداليات، تفصيل حسب الطلب.
+            </p>
+          </div>
+          <div class="card signs">
+            <img
+              src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=400&fit=crop"
+              alt="لوحات مكتبية"
+              class="service-image"
+            />
+            <h3>لوحات مكتبية</h3>
+            <p>خشبية، أكريليك، تفصيل حسب الطلب.</p>
+          </div>
+          <div class="card shields">
+            <img
+              src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=400&h=400&fit=crop"
+              alt="دروع تذكارية"
+              class="service-image"
+            />
+            <h3>دروع تذكارية</h3>
+            <p>سيوف، دروع جلد، مجسمات دروع.</p>
+          </div>
+          <div class="card prints">
+            <img
+              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=400&fit=crop"
+              alt="مطبوعات تجارية"
+              class="service-image"
+            />
+            <h3>مطبوعات تجارية</h3>
+            <p>
+              فواتير، بزنس كارد، سندات قبض وصرف، ورق رسمي فاخر، بروشور، عقود،
+              أظرف، فولدرات، هولدر أكواب، مجلات، كتيب، كروت معايدات.
+            </p>
+          </div>
+          <div class="card lights">
+            <img
+              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop"
+              alt="لوحات حروف مضيئة"
+              class="service-image"
+            />
+            <h3>لوحات حروف مضيئة</h3>
+            <p>أكريليك، زينكور، استيل.</p>
+          </div>
+          <div class="card stickers">
+            <img
+              src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=400&fit=crop"
+              alt="استيكر"
+              class="service-image"
+            />
+            <h3>استيكر</h3>
+            <p>ورق، بلاستيك، قص حسب الطلب.</p>
+          </div>
+          <div class="card coffee">
+            <img
+              src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400&h=400&fit=crop"
+              alt="بوكس قهوة"
+              class="service-image"
+            />
+            <h3>بوكس قهوة (جركل)</h3>
+            <p>مع كيس داخلي حافظ حار وبارد — ١ لتر، ١.٥ لتر، ٢ لتر.</p>
+          </div>
+        </div>
+      </section>
 
-      // إغلاق القائمة عند النقر على رابط
-      nav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          nav.classList.remove("active");
+      <section id="clients" class="testimonials">
+        <h2>آراء العملاء</h2>
+        <div class="testimonial-container">
+          <div class="testimonial">
+            <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+            <p>أفضل مطبعة تعاملت معها، دقة وجودة عالية.</p>
+            <span class="client-name">– عميل 1</span>
+          </div>
+
+          <div class="testimonial">
+            <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+            <p>خدمة سريعة واحترافية، أنصح بهم بشدة.</p>
+            <span class="client-name">– عميل 2</span>
+          </div>
+        </div>
+      </section>
+
+      <footer id="contact">
+        <p style="margin-top: 1.5rem">
+          © 2025 جميع الحقوق محفوظة - مطبعة بصمة احتراف
+        </p>
+      </footer>
+
+      <script>
+        // قائمة الهمبرجر للموبايل
+        const menuToggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav");
+
+        menuToggle.addEventListener("click", () => {
+          nav.classList.toggle("active");
           const icon = menuToggle.querySelector("i");
-          icon.classList.remove("fa-times");
-          icon.classList.add("fa-bars");
+          if (nav.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
         });
-      });
 
-      // Slider Auto
-      let slides = document.querySelectorAll(".slide");
-      let current = 0;
-      setInterval(() => {
-        slides[current].classList.remove("active");
-        current = (current + 1) % slides.length;
-        slides[current].classList.add("active");
-      }, 4000);
+        // إغلاق القائمة عند النقر على رابط
+        nav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            nav.classList.remove("active");
+            const icon = menuToggle.querySelector("i");
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          });
+        });
 
-      // Testimonials Animation
-      const testimonials = document.querySelectorAll(".testimonial");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
+        // Slider Auto
+        let slides = document.querySelectorAll(".slide");
+        let current = 0;
+        setInterval(() => {
+          slides[current].classList.remove("active");
+          current = (current + 1) % slides.length;
+          slides[current].classList.add("active");
+        }, 4000);
+
+        // Testimonials Animation
+        const testimonials = document.querySelectorAll(".testimonial");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        testimonials.forEach((t) => observer.observe(t));
+
+        // Services Cards Animation
+        const cards = document.querySelectorAll(".card");
+        const cardObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        cards.forEach((c) => cardObserver.observe(c));
+
+        // فلترة الأقسام
+        const filterButtons = document.querySelectorAll(
+          ".filter-buttons button"
+        );
+        const allCards = document.querySelectorAll(".card");
+
+        filterButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            filterButtons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            const filter = btn.getAttribute("data-filter");
+
+            allCards.forEach((card) => {
+              if (filter === "all" || card.classList.contains(filter)) {
+                card.style.display = "block";
+                setTimeout(() => card.classList.add("visible"), 100);
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+
+        // تحديد التاب النشط في الهيدر
+        function setActiveTab() {
+          const currentPage =
+            window.location.pathname.split("/").pop() || "index.html";
+          const currentHash = window.location.hash || "";
+          const navLinks = document.querySelectorAll("nav a");
+
+          // إزالة active من جميع الروابط أولاً
+          navLinks.forEach((link) => link.classList.remove("active"));
+
+          navLinks.forEach((link) => {
+            const href = link.getAttribute("href");
+
+            // للصفحة الرئيسية (index.html)
+            if (
+              currentPage === "index.html" ||
+              currentPage === "" ||
+              currentPage.includes("index.html")
+            ) {
+              // التحقق من hash في URL (مثل #about, #clients)
+              if (currentHash) {
+                // إذا كان هناك hash، نفعّل التاب المطابق
+                if (
+                  href === currentHash ||
+                  href === `index.html${currentHash}` ||
+                  href.endsWith(currentHash)
+                ) {
+                  link.classList.add("active");
+                }
+              } else {
+                // إذا لم يكن هناك hash، نفعّل التاب الرئيسية
+                if (
+                  href === "#home" ||
+                  href === "index.html" ||
+                  href === "/" ||
+                  href === ""
+                ) {
+                  link.classList.add("active");
+                }
+              }
+            }
+            // للصفحات الأخرى
+            else if (href && href.includes(currentPage)) {
+              link.classList.add("active");
             }
           });
-        },
-        { threshold: 0.2 }
-      );
-      testimonials.forEach((t) => observer.observe(t));
-    </script>
+        }
+
+        // تحديد التاب النشط عند تحميل الصفحة
+        setActiveTab();
+
+        // تحديث التاب النشط عند تغيير hash (عند النقر على رابط داخلي)
+        window.addEventListener("hashchange", setActiveTab);
+      </script>
+    </div>
+    <!-- End page-wrapper -->
   </body>
 </html>
