@@ -243,6 +243,21 @@
         .card p {
           font-size: 0.9rem;
         }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          padding: 0 1rem;
+        }
+        .about-card {
+          padding: 1.5rem;
+        }
+        .about-card h3 {
+          font-size: 1.5rem;
+        }
+        .about-card p,
+        .about-card ul li {
+          font-size: 1rem;
+        }
       }
 
       /* Slider */
@@ -352,7 +367,7 @@
         border-radius: 16px;
         color: #070707;
         padding: 3rem 2rem;
-        max-width: 900px;
+        max-width: 1200px;
         margin: 2rem auto;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         opacity: 0;
@@ -361,10 +376,82 @@
       }
       .intro h2 {
         font-size: 2.5rem;
+        color: var(--charcoal);
+        margin-bottom: 2rem;
       }
       .intro p {
         font-size: 1.4rem;
         line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .about-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease forwards;
+      }
+      .about-card:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .about-card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .about-card:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .about-card:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+      .about-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      }
+      .about-card h3 {
+        font-size: 1.8rem;
+        color: var(--gold);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .about-card h3 i {
+        font-size: 1.5rem;
+      }
+      .about-card p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--gray-dark);
+        margin-bottom: 0;
+      }
+      .about-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .about-card ul li {
+        font-size: 1.1rem;
+        line-height: 2;
+        color: var(--gray-dark);
+        padding-right: 1.5rem;
+        position: relative;
+      }
+      .about-card ul li::before {
+        content: "✓";
+        position: absolute;
+        right: 0;
+        color: var(--gold);
+        font-weight: bold;
+        font-size: 1.2rem;
       }
       @keyframes fadeInUp {
         to {
@@ -493,6 +580,119 @@
         transform: translateY(0);
       }
 
+      /* شريط الشعارات المتحرك */
+      .logos-section {
+        background: linear-gradient(
+          135deg,
+          rgba(28, 28, 28, 0.95),
+          rgba(44, 44, 44, 0.95)
+        );
+        padding: 4rem 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .logos-section h2 {
+        font-size: 2.5rem;
+        color: var(--gold);
+        text-align: center;
+        margin-bottom: 3rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      }
+      .logos-slider {
+        display: flex;
+        gap: 3rem;
+        width: max-content;
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+        animation: scrollLogos 60s linear infinite;
+      }
+      .logos-slider:hover {
+        animation-play-state: paused;
+      }
+      @keyframes scrollLogos {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .logo-item {
+        flex-shrink: 0;
+        flex: 0 0 180px;
+        width: 180px;
+        min-width: 180px;
+        max-width: 180px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 2px solid transparent;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        box-sizing: border-box;
+      }
+      .logo-item:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        border-color: var(--gold);
+      }
+      .logo-item img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        filter: grayscale(30%);
+        transition: filter 0.3s ease;
+      }
+      .logo-item:hover img {
+        filter: grayscale(0%);
+      }
+      .logos-wrapper {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem 0;
+        width: 100%;
+        display: block;
+      }
+      .logos-wrapper::before,
+      .logos-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 200px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .logos-wrapper::before {
+        right: 0;
+        background: linear-gradient(
+          to left,
+          rgba(28, 28, 28, 0.98),
+          transparent
+        );
+      }
+      .logos-wrapper::after {
+        left: 0;
+        background: linear-gradient(
+          to right,
+          rgba(28, 28, 28, 0.98),
+          transparent
+        );
+      }
+      .logos-slider-duplicate {
+        display: flex;
+        gap: 3rem;
+        width: fit-content;
+      }
+
       /* Footer */
       footer {
         background: var(--charcoal);
@@ -572,6 +772,29 @@
           height: 60px !important;
           font-size: 28px !important;
         }
+        .logos-section {
+          padding: 3rem 0;
+        }
+        .logos-section h2 {
+          font-size: 1.8rem;
+          margin-bottom: 2rem;
+        }
+        .logo-item {
+          width: 140px;
+          min-width: 140px;
+          max-width: 140px;
+          flex: 0 0 140px;
+          height: 100px;
+          padding: 0.8rem;
+        }
+        .logos-slider {
+          gap: 2rem;
+          animation-duration: 120s;
+        }
+        .logos-wrapper::before,
+        .logos-wrapper::after {
+          width: 80px;
+        }
       }
     </style>
   </head>
@@ -625,9 +848,48 @@
       <section id="about" class="intro">
         <h2>نبذة عنا</h2>
         <p>
-          في مطبعة بصمة احتراف، نقدم حلولاً طباعية وإعلانية عصرية، تجمع بين
-          الحرفية العالية والابتكار المستمر لتترك بصمة مميزة لدى عملائنا.
+          تأسست مطبعة بصمة احتراف في عام ٢٠١٢ م وهي تضم جميع النشاطات التي تخدم
+          مجال الطباعة. تقدم خدماتها لكافة المستخدمين بجودة طباعة عالية مستخدمة
+          أفضل التقنيات وكفاءات بشرية ذو خبرة في مجال الطباعة بكافة أنواعها.
         </p>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>
+              <i class="fas fa-bullhorn"></i>
+              رسالتنا
+            </h3>
+            <p>
+              تقديم خدمات الطباعة بجودة عالية، وبتقنيات حديثة لتلبية احتياجات
+              عملائنا بأفضل ما يمكن.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>
+              <i class="fas fa-eye"></i>
+              رؤيتنا
+            </h3>
+            <p>
+              الارتقاء بمستوى خدمات الطباعة، لتصبح رائدة في مجال الطباعة
+              والإعلان محلياً وإقليمياً.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>
+              <i class="fas fa-bullseye"></i>
+              أهدافنا
+            </h3>
+            <ul>
+              <li>التميز في مجال الطباعة</li>
+              <li>السعي للتطوير دائماً</li>
+              <li>كسب ثقة العملاء</li>
+              <li>الإبداع والابتكار</li>
+              <li>استثمار الوقت والسرعة في الإنجاز</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section id="services" class="services">
@@ -652,7 +914,7 @@
         <div class="service-container">
           <div class="card gifts">
             <img
-              src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=400&fit=crop"
+              src="img/sevices_image/beber.jpg"
               alt="هدايا دعائية"
               class="service-image"
             />
@@ -664,7 +926,7 @@
           </div>
           <div class="card boxes">
             <img
-              src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop"
+              src="img/sevices_image/boxes.jpg"
               alt="بوكسات"
               class="service-image"
             />
@@ -676,7 +938,7 @@
           </div>
           <div class="card bags">
             <img
-              src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop"
+              src="img/sevices_image/bag.jpg"
               alt="اكياس"
               class="service-image"
             />
@@ -688,7 +950,7 @@
           </div>
           <div class="card stamps">
             <img
-              src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&h=400&fit=crop"
+              src="img/sevices_image/sign.jpg"
               alt="اختام"
               class="service-image"
             />
@@ -697,7 +959,7 @@
           </div>
           <div class="card cups">
             <img
-              src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=400&fit=crop"
+              src="img/sevices_image/cup.jpg"
               alt="اكواب"
               class="service-image"
             />
@@ -706,7 +968,7 @@
           </div>
           <div class="card laser">
             <img
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop"
+              src="img/sevices_image/lizer.jpg"
               alt="قص وحفر ليزر"
               class="service-image"
             />
@@ -718,7 +980,7 @@
           </div>
           <div class="card signs">
             <img
-              src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=400&fit=crop"
+              src="img/sevices_image/sign.jpg"
               alt="لوحات مكتبية"
               class="service-image"
             />
@@ -727,7 +989,7 @@
           </div>
           <div class="card shields">
             <img
-              src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=400&h=400&fit=crop"
+              src="img/sevices_image/remember.jpg"
               alt="دروع تذكارية"
               class="service-image"
             />
@@ -736,7 +998,7 @@
           </div>
           <div class="card prints">
             <img
-              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=400&fit=crop"
+              src="img/sevices_image/markiting.jpg"
               alt="مطبوعات تجارية"
               class="service-image"
             />
@@ -748,7 +1010,7 @@
           </div>
           <div class="card lights">
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop"
+              src="img/sevices_image/lighting.jpg"
               alt="لوحات حروف مضيئة"
               class="service-image"
             />
@@ -757,7 +1019,7 @@
           </div>
           <div class="card stickers">
             <img
-              src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=400&fit=crop"
+              src="img/sevices_image/sticker.jpg"
               alt="استيكر"
               class="service-image"
             />
@@ -766,7 +1028,7 @@
           </div>
           <div class="card coffee">
             <img
-              src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400&h=400&fit=crop"
+              src="img/sevices_image/coffe.jpg"
               alt="بوكس قهوة"
               class="service-image"
             />
@@ -776,19 +1038,178 @@
         </div>
       </section>
 
-      <section id="clients" class="testimonials">
-        <h2>آراء العملاء</h2>
-        <div class="testimonial-container">
-          <div class="testimonial">
-            <div class="user-icon"><i class="fas fa-user-circle"></i></div>
-            <p>أفضل مطبعة تعاملت معها، دقة وجودة عالية.</p>
-            <span class="client-name">– عميل 1</span>
-          </div>
-
-          <div class="testimonial">
-            <div class="user-icon"><i class="fas fa-user-circle"></i></div>
-            <p>خدمة سريعة واحترافية، أنصح بهم بشدة.</p>
-            <span class="client-name">– عميل 2</span>
+      <section id="clients" class="logos-section">
+        <h2>عملاؤنا</h2>
+        <div class="logos-wrapper">
+          <div class="logos-slider">
+            <div class="logo-item">
+              <img src="img/logos/baitalrashaka.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/alkahel.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/IV cafe.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/rashfaa.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/shaghaf.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/namercars.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/masa.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/general.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/haeelhealth.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/emarat_haeel.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/open_colleg.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/wawbroten.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/habby.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/burgerbeem.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/aubalo.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/cafehnoy.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/OSOL cafe.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/esben.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/enanrestaurant.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/arhab.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/treading.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/aldaawaa.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/groub.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/super_boy.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/albatraa.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/Rov Cafe`.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/almaghreby.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/alhosencom.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/goldennorth.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/assos.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/bayo.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/buildrasem.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/algazera.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/blackdeamond.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/altejarat.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/building_speed.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/wataneahwater.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/touger.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/almohaideb.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/alalmaa.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/trout.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/alzobian.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/kpya.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/taymesbah.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/assel.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/OR2.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/hosbetal.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/alecetrecity.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/haeelcooleg.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/amanathaeel.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/anwar.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/eval.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/alharas.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/almaraee.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/old cup cafe.png" alt="عميل" />
+            </div>
+            <div class="logo-item">
+              <img src="img/logos/altakheem.png" alt="عميل" />
+            </div>
           </div>
         </div>
       </section>
@@ -939,6 +1360,109 @@
 
         // تحديث التاب النشط عند تغيير hash (عند النقر على رابط داخلي)
         window.addEventListener("hashchange", setActiveTab);
+
+        // الحل النهائي للشريط المتحرك - حركة من اليسار إلى اليمين
+        const slider = document.querySelector(".logos-slider");
+
+        if (slider) {
+          // ننسخ المحتوى مرة واحدة فقط
+          const originalContent = slider.innerHTML;
+          slider.innerHTML = originalContent + originalContent;
+
+          // حساب العرض الفعلي بعد النسخ
+          const totalWidth = slider.scrollWidth;
+          const singleWidth = totalWidth / 2;
+
+          // إزالة CSS animation
+          slider.style.animation = "none";
+
+          let position = 0;
+          const speed = 0.5; // سرعة الحركة (يمكن تعديلها)
+          let isPaused = false;
+          let animationId = null;
+
+          function animate() {
+            if (!isPaused && singleWidth > 0) {
+              position -= speed;
+
+              // عند نهاية النسخة الأولى نعيد بدون أي قطع
+              if (Math.abs(position) >= singleWidth) {
+                position = 0;
+              }
+
+              slider.style.transform = `translateX(${position}px)`;
+            }
+            animationId = requestAnimationFrame(animate);
+          }
+
+          // بدء الحركة بعد تحميل الصور
+          function startAnimation() {
+            if (singleWidth > 0) {
+              position = 0;
+              isPaused = false;
+              animate();
+            } else {
+              // إعادة المحاولة بعد 100ms
+              setTimeout(startAnimation, 100);
+            }
+          }
+
+          // انتظار تحميل الصور
+          const images = slider.querySelectorAll("img");
+          let loadedImages = 0;
+          const totalImages = images.length;
+
+          if (totalImages === 0) {
+            setTimeout(startAnimation, 100);
+          } else {
+            images.forEach((img) => {
+              if (img.complete) {
+                loadedImages++;
+              } else {
+                img.addEventListener("load", () => {
+                  loadedImages++;
+                  if (loadedImages === totalImages) {
+                    setTimeout(startAnimation, 100);
+                  }
+                });
+                img.addEventListener("error", () => {
+                  loadedImages++;
+                  if (loadedImages === totalImages) {
+                    setTimeout(startAnimation, 100);
+                  }
+                });
+              }
+            });
+
+            if (loadedImages === totalImages) {
+              setTimeout(startAnimation, 100);
+            }
+
+            // بدء الحركة بعد 2 ثانية كحد أقصى
+            setTimeout(() => {
+              if (!animationId) {
+                startAnimation();
+              }
+            }, 2000);
+          }
+
+          // إيقاف الحركة عند hover
+          slider.addEventListener("mouseenter", () => {
+            isPaused = true;
+          });
+          slider.addEventListener("mouseleave", () => {
+            isPaused = false;
+          });
+
+          // إعادة حساب العرض عند تغيير حجم النافذة
+          window.addEventListener("resize", () => {
+            const newTotalWidth = slider.scrollWidth;
+            const newSingleWidth = newTotalWidth / 2;
+            if (newSingleWidth > 0 && Math.abs(position) >= newSingleWidth) {
+              position = 0;
+            }
+          });
+        }
       </script>
     </div>
     <!-- End page-wrapper -->
