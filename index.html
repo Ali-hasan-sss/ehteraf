@@ -12,6 +12,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 
     <style>
       :root {
@@ -598,33 +603,25 @@
         margin-bottom: 3rem;
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
       }
-      .logos-slider {
-        display: flex;
-        gap: 3rem;
-        width: max-content;
-        will-change: transform;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        transform: translate3d(0, 0, 0);
-        animation: scrollLogos 60s linear infinite;
+      .logos-wrapper {
+        width: 100%;
+        padding: 2rem 0;
+        position: relative;
       }
-      .logos-slider:hover {
-        animation-play-state: paused;
+      .logos-swiper {
+        width: 100%;
+        overflow: hidden;
       }
-      @keyframes scrollLogos {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
+      .logos-swiper .swiper-wrapper {
+        align-items: center;
+        transition-timing-function: linear;
+      }
+      .logos-swiper .swiper-slide {
+        width: auto;
+        height: auto;
       }
       .logo-item {
-        flex-shrink: 0;
-        flex: 0 0 180px;
         width: 180px;
-        min-width: 180px;
-        max-width: 180px;
         height: 120px;
         display: flex;
         align-items: center;
@@ -635,8 +632,6 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border: 2px solid transparent;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
         box-sizing: border-box;
       }
       .logo-item:hover {
@@ -645,7 +640,7 @@
         border-color: var(--gold);
       }
       .logo-item img {
-        max-width: 100%;
+        width: 100%;
         max-height: 100%;
         object-fit: contain;
         filter: grayscale(30%);
@@ -653,44 +648,6 @@
       }
       .logo-item:hover img {
         filter: grayscale(0%);
-      }
-      .logos-wrapper {
-        position: relative;
-        overflow: hidden;
-        padding: 2rem 0;
-        width: 100%;
-        display: block;
-      }
-      .logos-wrapper::before,
-      .logos-wrapper::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        width: 200px;
-        height: 100%;
-        z-index: 2;
-        pointer-events: none;
-      }
-      .logos-wrapper::before {
-        right: 0;
-        background: linear-gradient(
-          to left,
-          rgba(28, 28, 28, 0.98),
-          transparent
-        );
-      }
-      .logos-wrapper::after {
-        left: 0;
-        background: linear-gradient(
-          to right,
-          rgba(28, 28, 28, 0.98),
-          transparent
-        );
-      }
-      .logos-slider-duplicate {
-        display: flex;
-        gap: 3rem;
-        width: fit-content;
       }
 
       /* Footer */
@@ -781,19 +738,8 @@
         }
         .logo-item {
           width: 140px;
-          min-width: 140px;
-          max-width: 140px;
-          flex: 0 0 140px;
           height: 100px;
           padding: 0.8rem;
-        }
-        .logos-slider {
-          gap: 2rem;
-          animation-duration: 120s;
-        }
-        .logos-wrapper::before,
-        .logos-wrapper::after {
-          width: 80px;
         }
       }
     </style>
@@ -980,7 +926,7 @@
           </div>
           <div class="card signs">
             <img
-              src="img/sevices_image/sign.jpg"
+              src="img/sevices_image/desck.jpg"
               alt="لوحات مكتبية"
               class="service-image"
             />
@@ -1041,174 +987,288 @@
       <section id="clients" class="logos-section">
         <h2>عملاؤنا</h2>
         <div class="logos-wrapper">
-          <div class="logos-slider">
-            <div class="logo-item">
-              <img src="img/logos/baitalrashaka.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/alkahel.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/IV cafe.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/rashfaa.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/shaghaf.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/namercars.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/masa.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/general.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/haeelhealth.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/emarat_haeel.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/open_colleg.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/wawbroten.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/habby.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/burgerbeem.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/aubalo.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/cafehnoy.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/OSOL cafe.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/esben.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/enanrestaurant.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/arhab.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/treading.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/aldaawaa.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/groub.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/super_boy.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/albatraa.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/Rov Cafe`.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/almaghreby.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/alhosencom.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/goldennorth.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/assos.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/bayo.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/buildrasem.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/algazera.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/blackdeamond.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/altejarat.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/building_speed.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/wataneahwater.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/touger.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/almohaideb.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/alalmaa.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/trout.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/alzobian.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/kpya.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/taymesbah.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/assel.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/OR2.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/hosbetal.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/alecetrecity.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/haeelcooleg.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/amanathaeel.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/anwar.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/eval.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/alharas.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/almaraee.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/old cup cafe.png" alt="عميل" />
-            </div>
-            <div class="logo-item">
-              <img src="img/logos/altakheem.png" alt="عميل" />
+          <div class="swiper logos-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/baitalrashaka.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/alkahel.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/IV cafe.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/rashfaa.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/shaghaf.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/namercars.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/masa.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/general.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/haeelhealth.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/emarat_haeel.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/open_colleg.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/wawbroten.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/habby.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/burgerbeem.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/aubalo.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/cafehnoy.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/OSOL cafe.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/esben.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/enanrestaurant.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/arhab.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/treading.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/aldaawaa.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/groub.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/super_boy.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/albatraa.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/Rov Cafe`.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/almaghreby.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/alhosencom.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/goldennorth.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/assos.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/bayo.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/buildrasem.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/algazera.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/blackdeamond.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/altejarat.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/building_speed.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/wataneahwater.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/touger.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/almohaideb.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/alalmaa.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/trout.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/alzobian.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/kpya.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/taymesbah.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/assel.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/OR2.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/hosbetal.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/alecetrecity.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/haeelcooleg.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/amanathaeel.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/anwar.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/eval.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/alharas.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/almaraee.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/old cup cafe.png" alt="عميل" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="logo-item">
+                  <img src="img/logos/altakheem.png" alt="عميل" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1360,109 +1420,55 @@
 
         // تحديث التاب النشط عند تغيير hash (عند النقر على رابط داخلي)
         window.addEventListener("hashchange", setActiveTab);
+      </script>
 
-        // الحل النهائي للشريط المتحرك - حركة من اليسار إلى اليمين
-        const slider = document.querySelector(".logos-slider");
-
-        if (slider) {
-          // ننسخ المحتوى مرة واحدة فقط
-          const originalContent = slider.innerHTML;
-          slider.innerHTML = originalContent + originalContent;
-
-          // حساب العرض الفعلي بعد النسخ
-          const totalWidth = slider.scrollWidth;
-          const singleWidth = totalWidth / 2;
-
-          // إزالة CSS animation
-          slider.style.animation = "none";
-
-          let position = 0;
-          const speed = 0.5; // سرعة الحركة (يمكن تعديلها)
-          let isPaused = false;
-          let animationId = null;
-
-          function animate() {
-            if (!isPaused && singleWidth > 0) {
-              position -= speed;
-
-              // عند نهاية النسخة الأولى نعيد بدون أي قطع
-              if (Math.abs(position) >= singleWidth) {
-                position = 0;
-              }
-
-              slider.style.transform = `translateX(${position}px)`;
-            }
-            animationId = requestAnimationFrame(animate);
-          }
-
-          // بدء الحركة بعد تحميل الصور
-          function startAnimation() {
-            if (singleWidth > 0) {
-              position = 0;
-              isPaused = false;
-              animate();
-            } else {
-              // إعادة المحاولة بعد 100ms
-              setTimeout(startAnimation, 100);
-            }
-          }
-
-          // انتظار تحميل الصور
-          const images = slider.querySelectorAll("img");
-          let loadedImages = 0;
-          const totalImages = images.length;
-
-          if (totalImages === 0) {
-            setTimeout(startAnimation, 100);
-          } else {
-            images.forEach((img) => {
-              if (img.complete) {
-                loadedImages++;
-              } else {
-                img.addEventListener("load", () => {
-                  loadedImages++;
-                  if (loadedImages === totalImages) {
-                    setTimeout(startAnimation, 100);
-                  }
-                });
-                img.addEventListener("error", () => {
-                  loadedImages++;
-                  if (loadedImages === totalImages) {
-                    setTimeout(startAnimation, 100);
-                  }
-                });
-              }
-            });
-
-            if (loadedImages === totalImages) {
-              setTimeout(startAnimation, 100);
-            }
-
-            // بدء الحركة بعد 2 ثانية كحد أقصى
-            setTimeout(() => {
-              if (!animationId) {
-                startAnimation();
-              }
-            }, 2000);
-          }
-
-          // إيقاف الحركة عند hover
-          slider.addEventListener("mouseenter", () => {
-            isPaused = true;
-          });
-          slider.addEventListener("mouseleave", () => {
-            isPaused = false;
-          });
-
-          // إعادة حساب العرض عند تغيير حجم النافذة
-          window.addEventListener("resize", () => {
-            const newTotalWidth = slider.scrollWidth;
-            const newSingleWidth = newTotalWidth / 2;
-            if (newSingleWidth > 0 && Math.abs(position) >= newSingleWidth) {
-              position = 0;
-            }
-          });
-        }
+      <!-- Swiper JS -->
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <script>
+        // تهيئة Swiper للشعارات
+        const logosSwiper = new Swiper(".logos-swiper", {
+          slidesPerView: 6,
+          spaceBetween: 30,
+          loop: true,
+          loopedSlides: 10,
+          autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          },
+          speed: 5000,
+          freeMode: false,
+          grabCursor: false,
+          allowTouchMove: false,
+          centeredSlides: false,
+          breakpoints: {
+            320: {
+              slidesPerView: 2.5,
+              spaceBetween: 16,
+              loopedSlides: 5,
+            },
+            480: {
+              slidesPerView: 3.5,
+              spaceBetween: 20,
+              loopedSlides: 7,
+            },
+            768: {
+              slidesPerView: 4.5,
+              spaceBetween: 24,
+              loopedSlides: 9,
+            },
+            1024: {
+              slidesPerView: 5.5,
+              spaceBetween: 30,
+              loopedSlides: 11,
+            },
+            1280: {
+              slidesPerView: 6,
+              spaceBetween: 30,
+              loopedSlides: 12,
+            },
+          },
+        });
       </script>
     </div>
     <!-- End page-wrapper -->
